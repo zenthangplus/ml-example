@@ -1,7 +1,8 @@
 version: '2'
 services:
-  ml:
+  tensor:
     image: "tensorflow/tensorflow"
+    container_name: "tensor"
     volumes:
       - .:/notebooks
     ports:
