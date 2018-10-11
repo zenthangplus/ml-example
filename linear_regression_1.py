@@ -19,7 +19,7 @@ loss = tf.square(linear_model - y)
 total_loss = tf.reduce_sum(loss)
 
 # Optimizer
-optimizer = tf.train.GradientDescentOptimizer(0.001)
+optimizer = tf.train.GradientDescentOptimizer(0.01)
 train = optimizer.minimize(total_loss)
 
 # Training data
