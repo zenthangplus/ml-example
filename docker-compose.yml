@@ -1,0 +1,8 @@
+version: '2'
+services:
+  ml:
+    image: "tensorflow/tensorflow"
+    volumes:
+      - .:/notebooks
+    ports:
+      - 8888:8888
