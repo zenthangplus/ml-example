@@ -1,9 +1,11 @@
 version: '2'
 services:
   tensor:
-    image: "tensorflow/tensorflow"
+    build: .
     container_name: "tensor"
     volumes:
       - .:/notebooks
     ports:
       - 8888:8888
+    environment:
+      - MPLBACKEND=agg

@@ -1,5 +1,6 @@
 import os
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 # Just disables the warning, doesn't enable AVX/FMA
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -9,7 +10,7 @@ W = tf.Variable(0, dtype=tf.float32)
 b = tf.Variable(0, dtype=tf.float32)
 x = tf.placeholder(tf.float32)
 
-# Create model
+# Creating model
 linear_model = W*x + b
 
 # Loss function
@@ -18,12 +19,18 @@ loss = tf.square(linear_model - y)
 total_loss = tf.reduce_sum(loss)
 
 # Optimizer
-optimizer = tf.train.GradientDescentOptimizer(0.01)
+optimizer = tf.train.GradientDescentOptimizer(0.001)
 train = optimizer.minimize(total_loss)
 
 # Training data
 x_train = [1, 2, 3, 4]
 y_train = [0, -1, -2, -3]
+
+# Render graph image for training data
+plt.plot(x_train, y_train, 'ro')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.savefig('graph/linear_regression_1.png', dpi=150)
 
 # Init variables
 sess = tf.Session()
